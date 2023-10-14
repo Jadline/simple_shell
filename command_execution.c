@@ -21,7 +21,7 @@ void invoke_program(char *my_path, char *my_args[])
 		char *envp[] = { NULL };
 		if (execve(my_path,my_args,envp) == -1)
 		{
-			perror("failed to load the program\n");
+			perror(my_path);
 			exit(EXIT_FAILURE);
 		}
 	}

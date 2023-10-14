@@ -4,5 +4,5 @@
  */
 void prompt_exhibit(void)
 {
-	print_myfunc("GeffJadd$");
+	print_myfunc("GeffJadd$ ");
 }

@@ -8,6 +8,7 @@ int main(void)
 	{
 		char *my_string_input = NULL;
 		size_t size = 0;
+		size_t length;
 
 		char *args[3];
 
@@ -22,7 +23,11 @@ int main(void)
 			}
 			else
 			{
-				my_string_input[strcspn(my_string_input, "\n")] = '\0';
+				length = strlen(my_string_input);
+				if (length > 0 && my_string_input[length - 1] == '\n')
+				{
+					my_string_input[length - 1] = '\0';
+				}
 				args[0] = my_string_input;
 				args[1] = NULL;
 
