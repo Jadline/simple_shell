@@ -19,8 +19,9 @@ void my_command(char **my_string, size_t *size)
 		}
 		else
 		{
-			 perror("Error reading input");
-			 exit(EXIT_FAILURE);
+			print_myfunc("Error");
+			exit(EXIT_FAILURE);
 		}
 	}
 }
+
