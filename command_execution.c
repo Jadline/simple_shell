@@ -5,7 +5,7 @@
  * @my_path:path of the executable
  * @my_args:takes the arguments for the path
  */
-void invoke_program(char *my_path, char **my_args)
+void invoke_program(char *my_path, char *my_args[])
 {
 	int status;
 
@@ -18,9 +18,10 @@ void invoke_program(char *my_path, char **my_args)
 	}
 	else if (new_program == 0)
 	{
-		if(execve(my_path,my_args,NULL) == -1)
+		char *envp[] = { NULL };
+		if (execve(my_path,my_args,envp) == -1)
 		{
-			perror("failed to load the program\n");
+			perror(my_path);
 			exit(EXIT_FAILURE);
 		}
 	}

@@ -10,6 +10,6 @@
 
 void print_myfunc(const char *message);
 void prompt_exhibit(void);
-void my_command(char *my_string, size_t size);
 void invoke_program(char *my_path, char **my_args);
+void my_command(char **my_string, size_t *size);
 #endif
