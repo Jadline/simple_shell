@@ -14,5 +14,10 @@ void my_command(char *my_string, size_t size)
 			print_myfunc("\n");
 			exit(EXIT_SUCCESS);
 		}
+		else
+		{
+			print_myfunc("Error");
+			exit(EXIT_FAILURE);
+		}
 	}
 }
