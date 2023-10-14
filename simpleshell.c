@@ -2,7 +2,7 @@
 /**
  * main - The entry point of the program
  */
-int main(void)
+int main(int arg_count, char *argv[])
 {
 	if (isatty(STDIN_FILENO))
 	{
