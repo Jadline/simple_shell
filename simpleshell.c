@@ -2,38 +2,54 @@
 /**
  * main - The entry point of the program
  */
-int main(int arg_count, char *argv[])
+void handle_input(char *my_string_input)
 {
-	if (isatty(STDIN_FILENO))
+	char *args[ARG_MAX];
+
+	size_t length;
+	length = strlen(my_string_input);
+	if (length > 0 && my_string_input[length - 1] == '\n')
+	{
+
+		 my_string_input[length - 1] = '\0';
+	}
+	handle_com_line_args(my_string_input, args);
+	invoke_program(args[0], args);
+}
+
+int main(int argc, char *argv[])
+{
+	if (argc > 1)
+	{
+		int k;
+		for (k = 1; k < argc; k++)
+		{
+			handle_input(argv[k]);
+		}
+	}
+	else
 	{
 		char *my_string_input = NULL;
 		size_t size = 0;
-		size_t length;
-
-		char *args[3];
 
 		while (1)
 		{
-			prompt_exhibit();
-			my_command(&my_string_input,&size);
-			if (strcmp(my_string_input, "exit\n") == 0)
+			if (isatty(STDIN_FILENO))
 			{
-				free(my_string_input);
-				break;
-			}
-			else
-			{
-				length = strlen(my_string_input);
-				if (length > 0 && my_string_input[length - 1] == '\n')
+				prompt_exhibit();
+				my_command(&my_string_input,&size);
+				if (strcmp(my_string_input, "exit\n") == 0)
 				{
-					my_string_input[length - 1] = '\0';
+					free(my_string_input);
+					break;
 				}
-				args[0] = my_string_input;
-				args[1] = NULL;
-
-				invoke_program(args[0],args);
+				else
+				{
+					handle_input(my_string_input);
+				}
 			}
 		}
 	}
 	return (0);
 }
+

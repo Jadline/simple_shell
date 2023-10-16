@@ -12,16 +12,13 @@ void my_command(char **my_string, size_t *size)
 	my_char_string = getline(my_string, size,stdin);
 	if (my_char_string == -1)
 	{
-		if (feof(stdin))
-		{
-			print_myfunc("\n");
-			exit(EXIT_SUCCESS);
-		}
-		else
-		{
-			print_myfunc("Error");
-			exit(EXIT_FAILURE);
-		}
+		print_myfunc("Error reading input\n");
+		exit(EXIT_FAILURE);
+	}
+	else if (my_char_string == 0)
+	{
+		print_myfunc("\n");
+		exit(EXIT_SUCCESS);
 	}
 }
 
