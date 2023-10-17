@@ -1,0 +1,5 @@
+#This file contains the list of contributors of this repository
+
+Jadline Njeri <njerijadline@gmail.com>
+Gabriel Effangha <gabrielnoah1@gmail.com>
+
