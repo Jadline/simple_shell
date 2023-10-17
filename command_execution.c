@@ -10,7 +10,6 @@ void invoke_program(char *my_path, char *my_args[])
 	int status;
 
 	pid_t new_program = fork();
-	
 	if (new_program == -1)
 	{
 		perror("failed to create a child process");
@@ -19,7 +18,8 @@ void invoke_program(char *my_path, char *my_args[])
 	else if (new_program == 0)
 	{
 		char *envp[] = { NULL };
-		if (execve(my_path,my_args,envp) == -1)
+
+		if (execve(my_path, my_args, envp) == -1)
 		{
 			perror("failed to load the program\n");
 			exit(EXIT_FAILURE);

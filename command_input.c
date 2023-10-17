@@ -9,7 +9,7 @@ void my_command(char **my_string, size_t *size)
 {
 	ssize_t my_char_string;
 
-	my_char_string = getline(my_string, size,stdin);
+	my_char_string = getline(my_string, size, stdin);
 	if (my_char_string == -1)
 	{
 		print_myfunc("Error reading input\n");
@@ -20,5 +20,6 @@ void my_command(char **my_string, size_t *size)
 		print_myfunc("\n");
 		exit(EXIT_SUCCESS);
 	}
+	free(*my_string);
 }
 

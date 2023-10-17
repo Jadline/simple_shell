@@ -1,7 +1,10 @@
 #include "simpleshell.h"
 /**
  * main - The entry point of the program
+ * handle_input - This function handle_input takes a string input, removes the newline character if it exists at the end of the string, and then passes the string.
+ * @my_string_input: A pointer to a character
  */
+
 void handle_input(char *my_string_input)
 {
 	char *args[ARG_MAX];
@@ -37,7 +40,7 @@ int main(int argc, char *argv[])
 			if (isatty(STDIN_FILENO))
 			{
 				prompt_exhibit();
-				my_command(&my_string_input,&size);
+				my_command(&my_string_input, &size);
 				if (strcmp(my_string_input, "exit\n") == 0)
 				{
 					free(my_string_input);
