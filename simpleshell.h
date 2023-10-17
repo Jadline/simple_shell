@@ -12,6 +12,7 @@
 
 #define my_delimiter ":"
 #define ARG_MAX 256
+void output_my_environ(void);
 char * handle_my_path(char *inputcommand);
 void handle_input(char *my_string_input);
 void handle_com_line_args(char *new_input, char *args[]);
