@@ -20,6 +20,5 @@ void my_command(char **my_string, size_t *size)
 		print_myfunc("\n");
 		exit(EXIT_SUCCESS);
 	}
-	free(*my_string);
 }
 

@@ -6,5 +6,5 @@
  */
 void print_myfunc(const char *message)
 {
-	write(STDOUT_FILENO, &message, strlen(message));
+	write(STDOUT_FILENO, message, strlen(message));
 }

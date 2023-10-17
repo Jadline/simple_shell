@@ -8,8 +8,17 @@
 void invoke_program(char *my_path, char *my_args[])
 {
 	int status;
+	char *actual_full_path;
+	pid_t new_program;
 
-	pid_t new_program = fork();
+	actual_full_path = handle_my_path(my_path);
+	if (actual_full_path == NULL)
+	{
+		print_myfunc("failed to find command");
+		return;
+	}
+
+	new_program = fork();
 	if (new_program == -1)
 	{
 		perror("failed to create a child process");
@@ -19,7 +28,7 @@ void invoke_program(char *my_path, char *my_args[])
 	{
 		char *envp[] = { NULL };
 
-		if (execve(my_path, my_args, envp) == -1)
+		if (execve(actual_full_path, my_args, envp) == -1)
 		{
 			perror("failed to load the program\n");
 			exit(EXIT_FAILURE);
@@ -27,6 +36,7 @@ void invoke_program(char *my_path, char *my_args[])
 	}
 	else
 	{
+		free(actual_full_path);
 		wait(&status);
 	}
 }

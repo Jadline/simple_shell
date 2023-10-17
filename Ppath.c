@@ -5,7 +5,13 @@ char * handle_my_path(char *inputcommand)
 	char *duplicate_path;
 	char * my_token;
 	char length_of_path[PATH_MAX];
-	char *_getpath = getenv("PATH");
+	char *_getpath;
+
+	if (access(inputcommand, X_OK) == 0)
+	{
+		return strdup(inputcommand);
+	}
+	_getpath = getenv("PATH");
 	if (_getpath == NULL)
 	{
 		perror("failed to get path");
