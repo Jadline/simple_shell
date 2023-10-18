@@ -9,7 +9,7 @@ char * handle_my_path(char *inputcommand)
 
 	if (access(inputcommand, X_OK) == 0)
 	{
-		return strdup(inputcommand);
+		return (strdup(inputcommand));
 	}
 	_getpath = getenv("PATH");
 	if (_getpath == NULL)
@@ -31,10 +31,10 @@ char * handle_my_path(char *inputcommand)
 		 if (access(length_of_path, X_OK) == 0)
 		 {
 			 free(duplicate_path);
-			 return strdup(length_of_path);
+			 return (strdup(length_of_path));
 		 }
 		 my_token = strtok(NULL, ":");
 	 }
 	 free(duplicate_path);
-	 return NULL;
+	 return (NULL);
 }
